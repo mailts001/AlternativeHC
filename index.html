@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Traditional Chinese Medicine — Interactive Course Preview</title>
+<style>
+  :root{--bg:#0f1724;--card:#0b1220;--muted:#9aa6b2;--accent:#8bd3c7}
+  body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:linear-gradient(180deg,#031023 0%, #072033 100%);color:#e6f0f2;margin:0;padding:28px}
+  .wrap{max-width:980px;margin:0 auto}
+  header{display:flex;gap:16px;align-items:center;margin-bottom:18px}
+  h1{margin:0;font-size:22px}
+  .card{background:rgba(255,255,255,0.02);padding:16px;border-radius:12px;box-shadow:0 6px 18px rgba(2,6,23,0.6);margin-bottom:14px}
+  nav{display:flex;gap:8px;flex-wrap:wrap}
+  .btn{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 10px;border-radius:8px;color:var(--accent);cursor:pointer}
+  section h2{margin-top:0}
+  .grid{display:grid;grid-template-columns:1fr 340px;gap:12px}
+  .sidebar{position:sticky;top:22px}
+  .quiz{margin-top:12px}
+  .item{padding:10px;border-radius:8px;background:rgba(255,255,255,0.01);margin-bottom:8px}
+  .element-diagram{display:flex;gap:8px;flex-wrap:wrap}
+  .element{flex:1;padding:10px;border-radius:8px;text-align:center;cursor:pointer}
+  footer{color:var(--muted);font-size:13px;margin-top:18px}
+  input[type=file]{display:block}
+  .download-list button{display:block;width:100%;margin-bottom:8px}
+  .correct{background:rgba(34,139,34,0.12);border:1px solid rgba(34,139,34,0.2)}
+  .wrong{background:rgba(220,20,60,0.06);border:1px solid rgba(220,20,60,0.15)}
+  details summary{cursor:pointer}
+  .kbd{background:#071a25;padding:4px 8px;border-radius:4px;font-size:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="card" style="padding:10px 14px">
+      <h1>Traditional Chinese Medicine — Interactive Course Preview</h1>
+      <div style="font-size:13px;color:var(--muted)">Extracted from the provided lecture PDF. This single-file HTML contains interactive learning components & downloadable materials for Udemy/Coursera.</div>
+    </div>
+    <div style="margin-left:auto">
+      <button class="btn" onclick="downloadAll()">Download Course Package</button>
+    </div>
+  </header>
+
+  <div class="grid">
+    <main>
+      <section class="card" id="intro">
+        <h2>Course Overview</h2>
+        <p>This preview contains: <strong>modules, interactive quizzes, diagrams, case exercises, and downloadable instructor materials</strong>. Use this page as a GitHub Pages-hosted course preview and as an asset bundle for Udemy/Coursera uploads (videos/slides/quizzes).</p>
+        <ul>
+          <li>Duration: 3–4 hours (recommended when converted to video lectures)</li>
+          <li>Level: Beginner → Intermediate</li>
+          <li>Main topics: Yin-Yang, Five Elements, Qi, Zang-Fu, Diagnosis (tongue & pulse), Acupuncture & Herbs</li>
+        </ul>
+      </section>
+
+      <section class="card" id="module1">
+        <h2>Module 1 — Foundations: History, Yin-Yang, Five Elements</h2>
+        <div class="item">
+          <strong>Key points extracted from PDF:</strong>
+          <ul>
+            <li>TCM spans 3,000+ years and includes acupuncture, herbs, cupping, Tui-Na, QiGong, and Gua Sha.</li>
+            <li>The Huangdi Neijing (Emperor Huang's Canon) and the Treatise on Cold Damage are primary texts.</li>
+          </ul>
+        </div>
+
+        <div class="item">
+          <h3>Interactive: Five Elements — click each to see organs & properties</h3>
+          <div class="element-diagram" id="elements"></div>
+        </div>
+
+        <div class="item">
+          <h3>Quick Quiz</h3>
+          <div id="quiz1" class="quiz"></div>
+        </div>
+      </section>
+
+      <section class="card" id="module2">
+        <h2>Module 2 — Organs, Qi, Blood & Meridians</h2>
+        <p>Content from PDF summarized: Zang (Heart, Liver, Spleen, Lung, Kidney) and Fu (stomach, intestines, gallbladder, bladder). Meridians circulate Qi, warm the limbs, defend the body and transform food into Qi.</p>
+
+        <div class="item">
+          <h3>Case Exercise — Pattern Diagnosis</h3>
+          <p>Read the short case and choose the most likely pattern:</p>
+          <div id="caseExercise"></div>
+        </div>
+      </section>
+
+      <section class="card" id="module3">
+        <h2>Module 3 — Examination: Tongue & Pulse</h2>
+        <p>From PDF: tongue inspection (color, coating, teeth marks), and wrist pulses at Cun-Guan-Chi positions and 3 depths.</p>
+
+        <div class="item">
+          <h3>Upload a tongue photo (for self-review only)</h3>
+          <input type="file" id="tongueUpload" accept="image/*" />
+          <div id="tonguePreview"></div>
+        </div>
+
+        <div class="item">
+          <h3>Virtual Pulse Simulator</h3>
+          <p>Select pulse qualities (slippery, wiry/string-like, rapid) to see suggested pattern matches.</p>
+          <div id="pulseSim"></div>
+        </div>
+      </section>
+
+      <section class="card" id="module4">
+        <h2>Module 4 — Acupuncture & Herbs</h2>
+        <p>Notes from PDF: acupuncture can relieve certain pain conditions; herbs are used in decoctions (9–18 substances). Examples: Artemisinin (sweet wormwood) and arsenic trioxide developments.</p>
+
+        <div class="item">
+          <h3>Herb Flashcards</h3>
+          <div id="herbCards"></div>
+        </div>
+
+        <div class="item">
+          <h3>Ethics & Safety Reminder</h3>
+          <p>Never replace effective conventional care. Consult qualified TCM practitioners. List herbs for possible drug interactions.</p>
+        </div>
+      </section>
+
+      <section class="card" id="module5">
+        <h2>Module 5 — Integrating TCM with Modern Care</h2>
+        <p>From PDF: recommendations and research direction — more randomized trials and modern methods are needed.</p>
+        <div class="item">
+          <h3>Downloadable Instructor Materials</h3>
+          <p>Use the right column to generate a syllabus, lecture scripts, quizzes and slides (auto-generated files).</p>
+        </div>
+      </section>
+
+    </main>
+
+    <aside class="sidebar">
+      <div class="card">
+        <h3>Quick actions</h3>
+        <button class="btn" onclick="generateSyllabus()">Generate Syllabus</button>
+        <button class="btn" onclick="generateLectureScripts()">Generate Lecture Scripts</button>
+        <button class="btn" onclick="generateQuizCSV()">Generate Quiz (CSV)</button>
+        <button class="btn" onclick="generateSlidesPlaceholder()">Generate Slides (placeholder)</button>
+        <div style="height:10px"></div>
+        <details class="item"><summary>Hosting & Upload notes</summary>
+          <ol style="color:var(--muted);font-size:13px">
+            <li>Create GitHub repo → add <span class="kbd">index.html</span> → enable GitHub Pages (branch: main)</li>
+            <li>Udemy / Coursera: convert each module into short videos (5–10 min) + PDF slides + quizzes</li>
+            <li>Coursera: you'll need peer-graded assessments & instructor presence for cert courses</li>
+          </ol>
+        </details>
+      </div>
+
+      <div class="card">
+        <h3>Downloads</h3>
+        <div class="download-list">
+          <button class="btn" onclick="downloadFile('syllabus.md', syllabusText)">Download: syllabus.md</button>
+          <button class="btn" onclick="downloadFile('lecture-scripts.txt', lectureScripts)">Download: lecture-scripts.txt</button>
+          <button class="btn" onclick="downloadFile('quiz-questions.csv', quizCSV)">Download: quiz-questions.csv</button>
+          <button class="btn" onclick="downloadFile('slides-placeholder.pdf', '')">Download: slides-placeholder.pdf</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Mini-Checklist for Udemy/Coursera Upload</h3>
+        <ul style="color:var(--muted);font-size:13px">
+          <li>Video MP4s, HD (720p+) with good audio</li>
+          <li>Lecture notes + slides (PDF)</li>
+          <li>Quizzes & answer keys</li>
+          <li>Promotional video (Udemy: 2–3 minutes)</li>
+          <li>Course image (banner + thumbnail)</li>
+        </ul>
+      </div>
+
+    </aside>
+  </div>
+
+  <footer>
+    Created from your uploaded PDF. Use the buttons to generate downloadable assets and host this file on GitHub Pages or any static hosting.
+  </footer>
+</div>
+
+<script>
+// --- Course content blobs (generated text for download) ---
+const syllabusText = `# Traditional Chinese Medicine — Syllabus\n\nCourse length: 3-4 hours (video equivalence)\n\nModules:\n1. Foundations: History, Yin-Yang, Five Elements\n2. Organs, Qi, Blood & Meridians\n3. Examination: Tongue & Pulse\n4. Diagnosis & Treatment Patterns\n5. Acupuncture & Herbs\n6. Integrating TCM with Modern Care\n\nAssessments: module quizzes, final case study, peer discussion\n\nLearning outcomes:\n- Explain basic TCM theory (Yin-Yang, Five Elements)\n- Identify major Zang-Fu and meridian functions\n- Perform basic tongue & pulse self-assessment\n- Outline safe use cases and limitations of TCM\`;
+
+const lectureScripts = `Module 1 – Script:\nIntro (30s): Welcome to TCM...\nLesson 1 (5 min): History and classical texts...\n...\n(Use these as voiceover scripts when you record video lectures.)`;
+
+const quizCSV = `module,question,options,answer\n1,Which element corresponds to the Liver?,Wood;Fire;Metal;Water,Wood\n1,Which organ pair belongs to Metal?,Heart & Small Intestine;Lung & Large Intestine;Kidney & Bladder;Spleen & Stomach,Lung & Large Intestine\n3,Tongue with red dry coating suggests?,Cold;Heat;Dampness;Deficiency,Heat`;
+
+// --- utilities ---
+function downloadFile(filename, text){
+  const blob = new Blob([text||'placeholder slide content'],{type:'application/octet-stream'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url; a.download = filename; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+}
+
+function generateSyllabus(){ downloadFile('syllabus.md', syllabusText) }
+function generateLectureScripts(){ downloadFile('lecture-scripts.txt', lectureScripts) }
+function generateQuizCSV(){ downloadFile('quiz-questions.csv', quizCSV) }
+function generateSlidesPlaceholder(){ downloadFile('slides-placeholder.pdf','PDF placeholder — replace with real slides when ready') }
+
+function downloadAll(){
+  generateSyllabus(); generateLectureScripts(); generateQuizCSV(); generateSlidesPlaceholder();
+  alert('Downloaded 4 files (syllabus, scripts, quiz CSV, slides placeholder). For full package zip, create locally or in CI.');
+}
+
+// --- interactive elements ---
+const elementsData = [
+  {name:'Wood',organs:'Liver & Gallbladder',traits:'growth, planning, upward movement'},
+  {name:'Fire',organs:'Heart & Small Intestine',traits:'heat, activity, joy'},
+  {name:'Earth',organs:'Spleen & Stomach',traits:'digestion, nourishment'},
+  {name:'Metal',organs:'Lung & Large Intestine',traits:'clarity, contractive processes'},
+  {name:'Water',organs:'Kidney & Bladder',traits:'storage, cooling, reproduction'}
+];
+const elWrap = document.getElementById('elements');
+elementsData.forEach((e,i)=>{
+  const d = document.createElement('div'); d.className='element item'; d.innerHTML=`<strong>${e.name}</strong><div style='font-size:13px;color:var(--muted)'>${e.organs}</div>`;
+  d.onclick = ()=>{ alert(e.name + '\nOrgans: ' + e.organs + '\nTraits: ' + e.traits) };
+  elWrap.appendChild(d);
+});
+
+// Quiz 1
+const quiz1 = document.getElementById('quiz1');
+const q1 = {q:'Which ancient text is a primary source for TCM doctrines?',opts:['Huangdi Neijing','Hippocratic Corpus','Charaka Samhita','Avicenna’s Canon'],'a':0};
+quiz1.innerHTML = `<div><strong>${q1.q}</strong></div>`;
+q1.opts.forEach((opt,idx)=>{
+  const b = document.createElement('button'); b.className='btn'; b.style.display='block'; b.style.marginTop='6px'; b.textContent = opt; b.onclick = ()=>{ if(idx===q1.a){ b.classList.add('correct'); alert('Correct!') } else{ b.classList.add('wrong'); alert('Incorrect — try reading Module 1.') } }
+  quiz1.appendChild(b);
+});
+
+// Case exercise
+const caseExercise = document.getElementById('caseExercise');
+caseExercise.innerHTML = `<div style='font-size:14px;color:var(--muted)'>Case: A patient has red eyes, irritability, dry mouth, constipation and a red tongue with yellow fur. What is the likely pattern?</div>`;
+['Spleen Qi deficiency','Liver Fire','Kidney Yin deficiency'].forEach((opt,i)=>{
+  const btn = document.createElement('button'); btn.className='btn'; btn.style.marginTop='8px'; btn.textContent=opt; btn.onclick=()=>{ if(opt.includes('Liver')){ btn.classList.add('correct'); alert('Correct — Liver Fire pattern') } else{ btn.classList.add('wrong'); alert('Not the best fit') } }
+  caseExercise.appendChild(btn);
+});
+
+// Tongue upload preview
+const tongueUpload = document.getElementById('tongueUpload');
+const tonguePreview = document.getElementById('tonguePreview');
+tongueUpload.addEventListener('change', e=>{
+  const f = e.target.files[0]; if(!f) return; const img = document.createElement('img'); img.style.maxWidth='260px'; img.style.borderRadius='8px'; img.style.marginTop='8px'; img.src = URL.createObjectURL(f); tonguePreview.innerHTML=''; tonguePreview.appendChild(img);
+});
+
+// Pulse simulator
+const pulseSim = document.getElementById('pulseSim');
+const pulses = ['Slippery','Wiry (String-like)','Rapid','Slow'];
+pulses.forEach(p=>{
+  const cb = document.createElement('button'); cb.className='btn'; cb.style.display='inline-block'; cb.style.margin='6px 6px 0 0'; cb.textContent=p; cb.onclick=()=>{ alert(p + ' — possible patterns: ' + (p.includes('Wiry')? 'Liver disharmony' : (p.includes('Slippery')? 'Dampness or Phlegm':'Check other signs')))}; pulseSim.appendChild(cb);
+});
+
+// Herb flashcards
+const herbCards = document.getElementById('herbCards');
+const herbs = [ {name:'Sweet Wormwood (Qing Hao)',notes:'Source of artemisinin — anti-malarial'}, {name:'Arsenic-derived therapy',notes:'Arsenic trioxide — used in leukemia (research origin)'}, {name:'Avermectin/Ivermectin',notes:'Derived from soil bacterium; anti-parasitic (Nobel prize example)'} ];
+herbs.forEach(h=>{ const el = document.createElement('div'); el.className='item'; el.innerHTML = `<strong>${h.name}</strong><div style='font-size:13px;color:var(--muted)'>${h.notes}</div>`; herbCards.appendChild(el); });
+
+</script>
+</body>
+</html>
