@@ -1,0 +1,680 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Traditional Chinese Medicine — Interactive Course Preview</title>
+<style>
+  :root{--bg:#0f1724;--card:#0b1220;--muted:#9aa6b2;--accent:#8bd3c7}
+  body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:linear-gradient(180deg,#031023 0%, #072033 100%);color:#e6f0f2;margin:0;padding:28px}
+  .wrap{max-width:980px;margin:0 auto}
+  header{display:flex;gap:16px;align-items:center;margin-bottom:18px}
+  h1{margin:0;font-size:22px}
+  .card{background:rgba(255,255,255,0.02);padding:16px;border-radius:12px;box-shadow:0 6px 18px rgba(2,6,23,0.6);margin-bottom:14px}
+  nav{display:flex;gap:8px;flex-wrap:wrap}
+  .btn{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 10px;border-radius:8px;color:var(--accent);cursor:pointer}
+  section h2{margin-top:0}
+  .grid{display:grid;grid-template-columns:1fr 340px;gap:12px}
+  .sidebar{position:sticky;top:22px}
+  .quiz{margin-top:12px}
+  .item{padding:10px;border-radius:8px;background:rgba(255,255,255,0.01);margin-bottom:8px}
+  .element-diagram{display:flex;gap:8px;flex-wrap:wrap}
+  .element{flex:1;padding:10px;border-radius:8px;text-align:center;cursor:pointer}
+  footer{color:var(--muted);font-size:13px;margin-top:18px}
+  input[type=file]{display:block}
+  .download-list button{display:block;width:100%;margin-bottom:8px}
+  .correct{background:rgba(34,139,34,0.12);border:1px solid rgba(34,139,34,0.2)}
+  .wrong{background:rgba(220,20,60,0.06);border:1px solid rgba(220,20,60,0.15)}
+  details summary{cursor:pointer}
+  .kbd{background:#071a25;padding:4px 8px;border-radius:4px;font-size:12px}
+  .yin-yang-diagram {width: 200px; height: 200px; background: linear-gradient(90deg, #fff 50%, #000 50%); border-radius: 50%; position: relative; margin: 0 auto;}
+  .yin-yang-diagram:before, .yin-yang-diagram:after {content: ''; position: absolute; width: 100px; height: 100px; border-radius: 50%;}
+  .yin-yang-diagram:before {background: #000; top: 0; left: 50px;}
+  .yin-yang-diagram:after {background: #fff; bottom: 0; left: 50px;}
+  .yin-yang-diagram .dot {position: absolute; width: 20px; height: 20px; border-radius: 50%;}
+  .yin-yang-diagram .dot:first-child {background: #fff; top: 40px; left: 90px;}
+  .yin-yang-diagram .dot:last-child {background: #000; bottom: 40px; left: 90px;}
+  .comparison-table {display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 15px 0;}
+  .comparison-table > div {padding: 10px; border-radius: 8px;}
+  .yang-column {background: rgba(255,255,255,0.05); border-left: 3px solid #f0f0f0;}
+  .yin-column {background: rgba(0,0,0,0.2); border-left: 3px solid #333;}
+  .timeline {position: relative; margin: 20px 0; padding-left: 30px;}
+  .timeline:before {content: ''; position: absolute; left: 15px; top: 0; bottom: 0; width: 2px; background: var(--accent);}
+  .timeline-item {position: relative; margin-bottom: 20px;}
+  .timeline-item:before {content: ''; position: absolute; left: -30px; top: 5px; width: 12px; height: 12px; border-radius: 50%; background: var(--accent);}
+  .timeline-year {font-weight: bold; color: var(--accent);}
+  .timeline-content {background: rgba(255,255,255,0.03); padding: 10px; border-radius: 8px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="card" style="padding:10px 14px">
+      <h1>Traditional Chinese Medicine — Interactive Course Preview</h1>
+      <div style="font-size:13px;color:var(--muted)">Extracted from the provided lecture PDF. This single-file HTML contains interactive learning components & downloadable materials for Udemy/Coursera.</div>
+    </div>
+    <div style="margin-left:auto">
+      <button class="btn" onclick="downloadAll()">Download Course Package</button>
+    </div>
+  </header>
+
+  <div class="grid">
+    <main>
+      <section class="card" id="intro">
+        <h2>Course Overview</h2>
+        <p>This preview contains: <strong>modules, interactive quizzes, diagrams, case exercises, and downloadable instructor materials</strong>. Use this page as a GitHub Pages-hosted course preview and as an asset bundle for Udemy/Coursera uploads (videos/slides/quizzes).</p>
+        <ul>
+          <li>Duration: 3–4 hours (recommended when converted to video lectures)</li>
+          <li>Level: Beginner → Intermediate</li>
+          <li>Main topics: Yin-Yang, Five Elements, Qi, Zang-Fu, Diagnosis (tongue & pulse), Acupuncture & Herbs</li>
+        </ul>
+      </section>
+
+      <section class="card" id="module1">
+        <h2>Module 1 — Foundations: History, Yin-Yang, Five Elements</h2>
+        
+        <div class="item">
+          <h3>TCM History & Development</h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-year">Warring States & Qin-Han Dynasties (BC770–AD220)</div>
+              <div class="timeline-content">Initiation of TCM theoretical system with influence from ancient philosophy and natural sciences</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-year">Han Dynasty</div>
+              <div class="timeline-content">
+                <ul>
+                  <li><strong>Huangdi Neijing</strong> - Earliest medical classic, foundation of TCM theory</li>
+                  <li><strong>Nan Jing</strong> - Q&A format covering viscera, meridians, pulse lore</li>
+                  <li><strong>Shang Han Za Bing Lun</strong> by Zhang Zhongjing - Syndrome differentiation</li>
+                  <li><strong>Shennong Ben Cao Jing</strong> - Earliest medicinal monograph with 365 herbs</li>
+                </ul>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-year">Jin, Sui & Tang Dynasties (265–907)</div>
+              <div class="timeline-content">
+                <ul>
+                  <li><strong>Hua Tuo</strong> - Early surgery with herbal anesthesia (Ma Fei San)</li>
+                  <li><strong>Wang Shuhe</strong> - Pulse diagnosis (Mai Jing)</li>
+                  <li><strong>Huang Pumi</strong> - Father of acupuncture (Zhenjiu Jiayi Jing)</li>
+                  <li><strong>Sun Simiao</strong> - Clinical encyclopedia (Qian Jin Yao Fang)</li>
+                </ul>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-year">Song, Jin & Yuan Dynasties (960–1368)</div>
+              <div class="timeline-content">
+                <ul>
+                  <li><strong>Four Great Physicians</strong>:
+                    <ul>
+                      <li>Liu Wansu - School of Cold Medicine</li>
+                      <li>Zhang Congzheng - School of Eliminating Pathogen</li>
+                      <li>Li Dongyuan - School of Spleen & Stomach</li>
+                      <li>Zhu Danxi - School of Nourishing Yin</li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-year">Ming & Qing Dynasties (1368–1911)</div>
+              <div class="timeline-content">
+                <ul>
+                  <li><strong>Li Shizhen</strong> - Ben Cao Gang Mu (1,892 herbs)</li>
+                  <li><strong>Warm Disease School</strong> - Ye Tianshi, Wu Jutong</li>
+                  <li><strong>Wang Qingren</strong> - Theory of stagnant blood</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <h3>Yin-Yang Theory</h3>
+          <div class="yin-yang-diagram">
+            <div class="dot"></div>
+            <div class="dot"></div>
+          </div>
+          
+          <details>
+            <summary>Basic Meaning of Yin-Yang</summary>
+            <p>Yin-Yang theory summarizes the attributes of two opposite aspects of correlative things or phenomena in nature. The movements and interactions of yin-yang explain the initiation, development and changes of all natural things.</p>
+          </details>
+          
+          <div class="comparison-table">
+            <div class="yang-column">
+              <h4>Yang Attributes</h4>
+              <ul>
+                <li>Heaven, Day, Warm, Active</li>
+                <li>External, Ascending, Exiting</li>
+                <li>Light, Bright, Sun, Strong</li>
+                <li>Dry, Hot, Fire, Male</li>
+                <li>Positive Charge, Spring & Summer</li>
+                <li>Fu Viscera, Qi, Defensive Qi</li>
+                <li>Warm, Rising, Exciting</li>
+                <li>Diffusion, Extroversion</li>
+              </ul>
+            </div>
+            <div class="yin-column">
+              <h4>Yin Attributes</h4>
+              <ul>
+                <li>Earth, Night, Cold, Static</li>
+                <li>Internal, Descending, Entering</li>
+                <li>Dark, Moon, Recessive</li>
+                <li>Damp, Cool, Water, Female</li>
+                <li>Negative Charge, Autumn & Winter</li>
+                <li>Zang Viscera, Essence, Nutrient Qi</li>
+                <li>Cool, Descending, Restraining</li>
+                <li>Aggregation, Tranquility</li>
+              </ul>
+            </div>
+          </div>
+          
+          <details>
+            <summary>Basic Content of Yin-Yang Theory</summary>
+            <ul>
+              <li><strong>Opposition and Interdependence</strong> - Yin and yang are opposite but rely on each other</li>
+              <li><strong>Restriction and Reciprocity</strong> - Yin and yang control and promote each other</li>
+              <li><strong>Wane-wax and Transformation</strong> - Constant change between yin and yang</li>
+              <li><strong>Balance and Imbalance</strong> - Health as dynamic balance, disease as imbalance</li>
+            </ul>
+          </details>
+        </div>
+
+        <div class="item">
+          <h3>Interactive: Five Elements — click each to see organs & properties</h3>
+          <div class="element-diagram" id="elements"></div>
+        </div>
+
+        <div class="item">
+          <h3>Quick Quiz</h3>
+          <div id="quiz1" class="quiz"></div>
+        </div>
+      </section>
+
+      <section class="card" id="module2">
+        <h2>Module 2 — Organs, Qi, Blood & Meridians</h2>
+        
+        <div class="item">
+          <h3>Tissue Structure in TCM</h3>
+          <div class="comparison-table">
+            <div class="yang-column">
+              <h4>Yang Structures</h4>
+              <ul>
+                <li>Upper body</li>
+                <li>Body surface</li>
+                <li>Back</li>
+                <li>Lateral sides of limbs</li>
+                <li>Fu viscera (hollow organs)</li>
+                <li>Heart & Lung</li>
+                <li>Heart-yang</li>
+                <li>Kidney-yang</li>
+              </ul>
+            </div>
+            <div class="yin-column">
+              <h4>Yin Structures</h4>
+              <ul>
+                <li>Lower body</li>
+                <li>Interior body</li>
+                <li>Abdomen</li>
+                <li>Medial sides of limbs</li>
+                <li>Zang viscera (solid organs)</li>
+                <li>Spleen, Liver & Kidney</li>
+                <li>Heart-yin</li>
+                <li>Kidney-yin</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="item">
+          <h3>Physiological Functions</h3>
+          <p>Human life activity demonstrates the outcome of yin-yang balance:</p>
+          <ul>
+            <li>Viscera and tissues pertain to yin, functional activities to yang</li>
+            <li>Nutrients pertain to yin, functional activities to yang</li>
+            <li>Qi (yang) produces, circulates, and controls blood (yin)</li>
+            <li>Blood (yin) generates qi and conveys qi</li>
+          </ul>
+        </div>
+
+        <div class="item">
+          <h3>Case Exercise — Pattern Diagnosis</h3>
+          <p>Read the short case and choose the most likely pattern:</p>
+          <div id="caseExercise"></div>
+        </div>
+      </section>
+
+      <section class="card" id="module3">
+        <h2>Module 3 — Examination: Tongue & Pulse</h2>
+        
+        <div class="item">
+          <h3>Pathological Changes in TCM</h3>
+          <p>In TCM, the imbalance of yin and yang is the basis of disease occurrence, development and change.</p>
+          
+          <details>
+            <summary>Superiority Patterns</summary>
+            <ul>
+              <li><strong>Superiority of Yang</strong> - Results in heat, "predominance of yang makes yin suffer"</li>
+              <li><strong>Superiority of Yin</strong> - Results in cold, "predominance of yin makes yang suffer"</li>
+            </ul>
+          </details>
+          
+          <details>
+            <summary>Inferiority Patterns</summary>
+            <ul>
+              <li><strong>Deficiency of Yang</strong> - Leads to cold, yang fails to restrain yin</li>
+              <li><strong>Deficiency of Yin</strong> - Leads to heat, yin fails to restrict yang</li>
+            </ul>
+          </details>
+          
+          <details>
+            <summary>Mutual Involvement</summary>
+            <ul>
+              <li><strong>Yang deficiency affects yin</strong> - Deficient yang fails to produce yin-fluid</li>
+              <li><strong>Yin deficiency affects yang</strong> - Deficient yin fails to nourish yang-qi</li>
+            </ul>
+          </details>
+        </div>
+
+        <div class="item">
+          <h3>Clinical Diagnosis</h3>
+          <p>The imbalance of yin and yang is the root cause of onset and development of disease.</p>
+          
+          <details>
+            <summary>Four Diagnostic Methods</summary>
+            <ul>
+              <li><strong>Observation</strong> - Bright color → yang; Dark/gloomy → yin</li>
+              <li><strong>Auscultation</strong> - Sonorous voice → yang; Low/feeble → yin</li>
+              <li><strong>Interrogation</strong> - Asking about symptoms and history</li>
+              <li><strong>Pulse diagnosis</strong> - See pulse qualities below</li>
+            </ul>
+          </details>
+          
+          <details>
+            <summary>Pulse Diagnosis</summary>
+            <div class="comparison-table">
+              <div class="yang-column">
+                <h4>Yang Pulse Qualities</h4>
+                <ul>
+                  <li>Cun location</li>
+                  <li>Rapid rate</li>
+                  <li>Superficial</li>
+                  <li>Surging</li>
+                  <li>Large</li>
+                  <li>Slippery</li>
+                </ul>
+              </div>
+              <div class="yin-column">
+                <h4>Yin Pulse Qualities</h4>
+                <ul>
+                  <li>Chi location</li>
+                  <li>Slow rate</li>
+                  <li>Deep</li>
+                  <li>Slow</li>
+                  <li>Small</li>
+                  <li>Choppy</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+        </div>
+
+        <div class="item">
+          <h3>Upload a tongue photo (for self-review only)</h3>
+          <input type="file" id="tongueUpload" accept="image/*" />
+          <div id="tonguePreview"></div>
+        </div>
+
+        <div class="item">
+          <h3>Virtual Pulse Simulator</h3>
+          <p>Select pulse qualities (slippery, wiry/string-like, rapid) to see suggested pattern matches.</p>
+          <div id="pulseSim"></div>
+        </div>
+      </section>
+
+      <section class="card" id="module4">
+        <h2>Module 4 — Acupuncture & Herbs</h2>
+        
+        <div class="item">
+          <h3>Treatment Principles</h3>
+          
+          <details>
+            <summary>For Superiority Patterns</summary>
+            <p><strong>"Reducing the surplus"</strong></p>
+            <ul>
+              <li>Excess-heat pattern → restrict yang with cold-cool medicinals ("cooling what is hot")</li>
+              <li>Excess-cold pattern → restrict yin with warm-hot medicinals ("heating what is cold")</li>
+            </ul>
+          </details>
+          
+          <details>
+            <summary>For Inferiority Patterns</summary>
+            <p><strong>"Reinforcing the deficient"</strong></p>
+            <ul>
+              <li>Yang deficiency → support yang</li>
+              <li>Yin deficiency → nourish yin</li>
+              <li>Methods of "seeking yin from yang and seeking yang from yin"</li>
+            </ul>
+          </details>
+        </div>
+
+        <div class="item">
+          <h3>Herb Properties</h3>
+          
+          <details>
+            <summary>Four Natures</summary>
+            <div class="comparison-table">
+              <div class="yang-column">
+                <h4>Yang Natures</h4>
+                <ul>
+                  <li>Hot/Warm nature</li>
+                  <li>Reduce/eliminate cold syndromes</li>
+                  <li>Examples: Fuzi, Ganjiang</li>
+                </ul>
+              </div>
+              <div class="yin-column">
+                <h4>Yin Natures</h4>
+                <ul>
+                  <li>Cold/Cool nature</li>
+                  <li>Reduce/eliminate heat syndromes</li>
+                  <li>Examples: Huangqin, Zhizi</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+          
+          <details>
+            <summary>Five Flavors</summary>
+            <div class="comparison-table">
+              <div class="yang-column">
+                <h4>Yang Flavors</h4>
+                <ul>
+                  <li>Acrid - can disperse</li>
+                  <li>Sweet - can nourish</li>
+                  <li>Examples: Guizhi, Gancao</li>
+                </ul>
+              </div>
+              <div class="yin-column">
+                <h4>Yin Flavors</h4>
+                <ul>
+                  <li>Sour - can astringe</li>
+                  <li>Bitter - can purge</li>
+                  <li>Salty - can soften and moisten</li>
+                  <li>Examples: Wumei, Dahuang, Mangxiao</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+        </div>
+
+        <div class="item">
+          <h3>Herb Flashcards</h3>
+          <div id="herbCards"></div>
+        </div>
+
+        <div class="item">
+          <h3>Ethics & Safety Reminder</h3>
+          <p>Never replace effective conventional care. Consult qualified TCM practitioners. List herbs for possible drug interactions.</p>
+        </div>
+      </section>
+
+      <section class="card" id="module5">
+        <h2>Module 5 — Integrating TCM with Modern Care</h2>
+        <div class="item">
+          <h3>Holistic View in TCM</h3>
+          <p>TCM views the human body as an organic whole and recognizes the close relationship between humans and their environment.</p>
+          
+          <details>
+            <summary>Human Body as an Organic Whole</summary>
+            <ul>
+              <li>Five Zang viscera connect six Fu-viscera, tissues, sense organs through meridian system</li>
+              <li>Internal pathological changes manifest externally (especially tongue & pulse)</li>
+              <li>Each organ has specific functions but coordinates with others</li>
+            </ul>
+          </details>
+          
+          <details>
+            <summary>Unity of Man and Nature</summary>
+            <ul>
+              <li>Spring-warm, germination (生)</li>
+              <li>Summer-hot, growth (长)</li>
+              <li>Late-summer-damp, transformation (化)</li>
+              <li>Autumn-dry, reaping (收)</li>
+              <li>Winter-cold, storing (藏)</li>
+            </ul>
+          </details>
+        </div>
+        
+        <div class="item">
+          <h3>Treatment Based on Syndrome Differentiation</h3>
+          <p>Syndrome differentiation is the prerequisite and basis for determining treatment in TCM.</p>
+          
+          <details>
+            <summary>Key Concepts</summary>
+            <ul>
+              <li><strong>Disease (病)</strong> - Complete morbid process with specific cause and presentation</li>
+              <li><strong>Symptom (症状)</strong> - Subjective discomfort felt by patient</li>
+              <li><strong>Sign (体征)</strong> - Objective abnormal change in the body</li>
+              <li><strong>Syndrome (证)</strong> - Pathological summary at a given stage of disease</li>
+            </ul>
+          </details>
+          
+          <details>
+            <summary>Treatment Principles</summary>
+            <ul>
+              <li><strong>Different treatments for the same disease</strong> - Based on different syndromes</li>
+              <li><strong>Same treatment for different diseases</strong> - Based on same pathomechanism</li>
+            </ul>
+          </details>
+        </div>
+      </section>
+
+    </main>
+
+    <aside class="sidebar">
+      <div class="card">
+        <h3>Quick actions</h3>
+        <button class="btn" onclick="generateSyllabus()">Generate Syllabus</button>
+        <button class="btn" onclick="generateLectureScripts()">Generate Lecture Scripts</button>
+        <button class="btn" onclick="generateQuizCSV()">Generate Quiz (CSV)</button>
+        <button class="btn" onclick="generateSlidesPlaceholder()">Generate Slides (placeholder)</button>
+      </div>
+      
+      <div class="card">
+        <h3>Key TCM Concepts</h3>
+        <div class="item">
+          <strong>Yin-Yang Balance</strong>
+          <div style="font-size:13px;color:var(--muted)">Dynamic equilibrium between opposing forces</div>
+        </div>
+        <div class="item">
+          <strong>Qi</strong>
+          <div style="font-size:13px;color:var(--muted)">Vital energy that circulates through meridians</div>
+        </div>
+        <div class="item">
+          <strong>Zang-Fu Organs</strong>
+          <div style="font-size:13px;color:var(--muted)">Five solid (Zang) and six hollow (Fu) organs</div>
+        </div>
+        <div class="item">
+          <strong>Meridians</strong>
+          <div style="font-size:13px;color:var(--muted)">Pathways through which Qi flows</div>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <footer>
+    Created from your uploaded PDF. Use the buttons to generate downloadable assets and host this file on GitHub Pages or any static hosting.
+  </footer>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  // --- Course content blobs ---
+  const syllabusText = `# Traditional Chinese Medicine — Syllabus
+Course length: 3-4 hours (video equivalence)
+Modules:
+1. Foundations: History, Yin-Yang, Five Elements
+2. Organs, Qi, Blood & Meridians
+3. Examination: Tongue & Pulse
+4. Diagnosis & Treatment Patterns
+5. Acupuncture & Herbs
+6. Integrating TCM with Modern Care
+Assessments: module quizzes, final case study, peer discussion
+Learning outcomes:
+- Explain basic TCM theory (Yin-Yang, Five Elements)
+- Identify major Zang-Fu and meridian functions
+- Perform basic tongue & pulse self-assessment
+- Outline safe use cases and limitations of TCM`;
+
+  const lectureScripts = `Module 1 – Script:
+Intro (30s): Welcome to TCM...
+Lesson 1 (5 min): History and classical texts...
+(Use these as voiceover scripts when you record video lectures.)`;
+
+  const quizCSV = `module,question,options,answer
+1,Which element corresponds to the Liver?,Wood;Fire;Metal;Water,Wood
+1,Which organ pair belongs to Metal?,Heart & Small Intestine;Lung & Large Intestine;Kidney & Bladder;Spleen & Stomach,Lung & Large Intestine
+3,Tongue with red dry coating suggests?,Cold;Heat;Dampness;Deficiency,Heat
+1,What is the basic therapeutic principle for yang superiority?,Reinforcing the deficient;Reducing the surplus;Nourishing yin;Supporting yang,Reducing the surplus
+2,Which of these is a yin structure?,Upper body;Body surface;Fu viscera;Zang viscera,Zang viscera
+3,Which pulse quality belongs to yang?,Deep;Slow;Choppy;Surging,Surging
+4,Which flavor belongs to yang?,Sour;Bitter;Salty;Acrid,Acrid
+5,What is the TCM concept of viewing the human body as interconnected?,Holism;Syndrome differentiation;Yin-yang theory;Five elements,Holism`;
+
+  // --- utilities ---
+  function downloadFile(filename, text){
+    const blob = new Blob([text||'placeholder slide content'], {type:'application/octet-stream'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a'); a.href = url; a.download = filename;
+    document.body.appendChild(a); a.click(); a.remove();
+    URL.revokeObjectURL(url);
+  }
+
+  window.generateSyllabus = () => downloadFile('syllabus.md', syllabusText);
+  window.generateLectureScripts = () => downloadFile('lecture-scripts.txt', lectureScripts);
+  window.generateQuizCSV = () => downloadFile('quiz-questions.csv', quizCSV);
+  window.generateSlidesPlaceholder = () => downloadFile('slides-placeholder.pdf','PDF placeholder — replace with real slides when ready');
+
+  window.downloadAll = () => {
+    generateSyllabus(); generateLectureScripts(); generateQuizCSV(); generateSlidesPlaceholder();
+    alert('Downloaded 4 files (syllabus, scripts, quiz CSV, slides placeholder).');
+  };
+
+  // --- interactive elements ---
+  const elementsData = [
+    {name:'Wood',organs:'Liver & Gallbladder',traits:'growth, planning, upward movement'},
+    {name:'Fire',organs:'Heart & Small Intestine',traits:'heat, activity, joy'},
+    {name:'Earth',organs:'Spleen & Stomach',traits:'digestion, nourishment'},
+    {name:'Metal',organs:'Lung & Large Intestine',traits:'clarity, contractive processes'},
+    {name:'Water',organs:'Kidney & Bladder',traits:'storage, cooling, reproduction'}
+  ];
+  const elWrap = document.getElementById('elements');
+  elementsData.forEach(e => {
+    const d = document.createElement('div'); d.className='element item';
+    d.innerHTML = `<strong>${e.name}</strong><div style='font-size:13px;color:var(--muted)'>${e.organs}</div>`;
+    d.onclick = ()=>{ alert(`${e.name}\nOrgans: ${e.organs}\nTraits: ${e.traits}`) };
+    elWrap.appendChild(d);
+  });
+
+  // Quiz 1
+  const quiz1 = document.getElementById('quiz1');
+  const questions = [
+    {q:'Which ancient text is a primary source for TCM doctrines?',opts:['Huangdi Neijing','Hippocratic Corpus','Charaka Samhita','Avicenna\'s Canon'],a:0},
+    {q:'What does "Yin" generally represent in TCM?',opts:['Activity and heat','Darkness and cold','External and ascending','Light and masculine'],a:1},
+    {q:'Which of these is a Yang attribute?',opts:['Descending','Cool','Internal','Active'],a:3},
+    {q:'What is the relationship between Yin and Yang?',opts:['They are completely separate','They oppose but depend on each other','Yang controls Yin completely','Yin transforms into Yang but not vice versa'],a:1}
+  ];
+  
+  questions.forEach((q, qIndex) => {
+    const qDiv = document.createElement('div');
+    qDiv.style.marginBottom = '20px';
+    qDiv.innerHTML = `<div><strong>${qIndex+1}. ${q.q}</strong></div>`;
+    q.opts.forEach((opt,idx)=>{
+      const b = document.createElement('button'); 
+      b.className='btn'; b.style.display='block'; b.style.marginTop='6px'; b.textContent = opt;
+      b.onclick = ()=>{ 
+        if(idx===q.a){ 
+          b.classList.add('correct'); 
+          setTimeout(() => alert('Correct!'), 100);
+        } 
+        else{ 
+          b.classList.add('wrong'); 
+          setTimeout(() => alert('Incorrect — review the material and try again.'), 100);
+        } 
+      };
+      qDiv.appendChild(b);
+    });
+    quiz1.appendChild(qDiv);
+  });
+
+  // Case exercise
+  const caseExercise = document.getElementById('caseExercise');
+  caseExercise.innerHTML = `<div style='font-size:14px;color:var(--muted)'>Case: A patient has red eyes, irritability, dry mouth, constipation and a red tongue with yellow fur. What is the likely pattern?</div>`;
+  ['Spleen Qi deficiency','Liver Fire','Kidney Yin deficiency'].forEach(opt=>{
+    const btn = document.createElement('button'); 
+    btn.className='btn'; btn.style.marginTop='8px'; btn.textContent=opt;
+    btn.onclick = ()=>{ 
+      if(opt.includes('Liver')){ 
+        btn.classList.add('correct'); 
+        setTimeout(() => alert('Correct — Liver Fire pattern (Yang excess)'), 100);
+      } 
+      else{ 
+        btn.classList.add('wrong'); 
+        setTimeout(() => alert('Not the best fit — review Yin-Yang patterns'), 100);
+      } 
+    };
+    caseExercise.appendChild(btn);
+  });
+
+  // Tongue upload preview
+  const tongueUpload = document.getElementById('tongueUpload');
+  const tonguePreview = document.getElementById('tonguePreview');
+  tongueUpload.addEventListener('change', e=>{
+    const f = e.target.files[0]; if(!f) return; 
+    const img = document.createElement('img'); 
+    img.style.maxWidth='260px'; img.style.borderRadius='8px'; img.style.marginTop='8px'; 
+    img.src = URL.createObjectURL(f); 
+    tonguePreview.innerHTML=''; tonguePreview.appendChild(img);
+  });
+
+  // Pulse simulator
+  const pulseSim = document.getElementById('pulseSim');
+  const pulses = ['Slippery','Wiry (String-like)','Rapid','Slow','Superficial','Deep','Large','Small'];
+  pulses.forEach(p=>{
+    const cb = document.createElement('button'); cb.className='btn'; 
+    cb.style.display='inline-block'; cb.style.margin='6px 6px 0 0'; cb.textContent=p;
+    cb.onclick = ()=>{ 
+      let pattern = '';
+      if(p.includes('Wiry')) pattern = 'Liver disharmony';
+      else if(p.includes('Slippery')) pattern = 'Dampness or Phlegm';
+      else if(p.includes('Rapid') || p.includes('Superficial') || p.includes('Large')) pattern = 'Yang pattern';
+      else if(p.includes('Slow') || p.includes('Deep') || p.includes('Small')) pattern = 'Yin pattern';
+      
+      alert(`${p} — ${p.includes('Wiry')||p.includes('Slippery')||p.includes('Rapid')||p.includes('Superficial')||p.includes('Large') ? 'Yang' : 'Yin'} pulse quality\nPossible patterns: ${pattern}`);
+    };
+    pulseSim.appendChild(cb);
+  });
+
+  // Herb flashcards
+  const herbCards = document.getElementById('herbCards');
+  const herbs = [ 
+    {name:'Huangqin (Radix Scutellariae)',notes:'Cold nature, clears heat, especially lung and stomach heat'}, 
+    {name:'Zhizi (Gardenia Fruit)',notes:'Cold nature, clears heat and fire, promotes diuresis'}, 
+    {name:'Fuzi (Prepared Aconite Root)',notes:'Hot nature, warms yang, rescues from collapse'},
+    {name:'Ganjiang (Dried Ginger)',notes:'Hot nature, warms middle jiao, dispels cold'},
+    {name:'Guizhi (Cinnamon Twig)',notes:'Warm nature, acrid flavor, releases exterior, warms channels'},
+    {name:'Gancao (Licorice Root)',notes:'Sweet flavor, harmonizes other herbs, tonifies spleen qi'}
+  ];
+  herbs.forEach(h=>{
+    const el = document.createElement('div'); el.className='item'; 
+    el.innerHTML = `<strong>${h.name}</strong><div style='font-size:13px;color:var(--muted)'>${h.notes}</div>`; 
+    herbCards.appendChild(el);
+  });
+
+});
+</script>
+</body>
+</html>
