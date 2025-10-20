@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coursera Course Proposal - Traditional Chinese Medicine</title>
+    <style>
+        :root {
+            --primary: #0056d2;
+            --primary-dark: #0041a8;
+            --secondary: #f5f5f5;
+            --text: #333;
+            --light-text: #666;
+            --border: #ddd;
+            --success: #28a745;
+            --error: #dc3545;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+            margin-bottom: 20px;
+        }
+        
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .form-container {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .form-section {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .form-section:last-of-type {
+            border-bottom: none;
+        }
+        
+        .section-title {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--secondary);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text);
+        }
+        
+        .required::after {
+            content: " *";
+            color: var(--error);
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="url"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: border 0.3s;
+        }
+        
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(0, 86, 210, 0.2);
+        }
+        
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .checkbox-item input {
+            margin-right: 8px;
+        }
+        
+        .file-upload {
+            border: 2px dashed var(--border);
+            border-radius: 4px;
+            padding: 20px;
+            text-align: center;
+            margin-top: 10px;
+            transition: border 0.3s;
+        }
+        
+        .file-upload:hover {
+            border-color: var(--primary);
+        }
+        
+        .file-upload input {
+            display: none;
+        }
+        
+        .file-upload label {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--secondary);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .file-upload label:hover {
+            background: #e0e0e0;
+        }
+        
+        .file-list {
+            margin-top: 15px;
+            list-style: none;
+        }
+        
+        .file-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 12px;
+            background: var(--secondary);
+            border-radius: 4px;
+            margin-bottom: 5px;
+        }
+        
+        .file-list button {
+            background: none;
+            border: none;
+            color: var(--error);
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background: var(--primary-dark);
+        }
+        
+        .help-text {
+            font-size: 0.9rem;
+            color: var(--light-text);
+            margin-top: 5px;
+        }
+        
+        .preview-section {
+            background: var(--secondary);
+            padding: 20px;
+            border-radius: 4px;
+            margin-top: 30px;
+        }
+        
+        .preview-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .format-requirements {
+            background: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        .format-requirements h3 {
+            color: #e65100;
+            margin-bottom: 10px;
+        }
+        
+        .format-requirements ul {
+            padding-left: 20px;
+        }
+        
+        .format-requirements li {
+            margin-bottom: 8px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .form-container {
+                padding: 20px;
+            }
+            
+            header h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Coursera Course Proposal</h1>
+            <p>Traditional Chinese Medicine: Foundations and Clinical Applications</p>
+        </header>
+        
+        <div class="form-container">
+            <form id="courseProposalForm">
+                <div class="form-section">
+                    <h2 class="section-title">Instructor Information</h2>
+                    
+                    <div class="form-group">
+                        <label for="instructorName" class="required">Full Name</label>
+                        <input type="text" id="instructorName" name="instructorName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="instructorEmail" class="required">Email Address</label>
+                        <input type="email" id="instructorEmail" name="instructorEmail" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="institution" class="required">Institution/Affiliation</label>
+                        <input type="text" id="institution" name="institution" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="instructorBio" class="required">Professional Biography</label>
+                        <textarea id="instructorBio" name="instructorBio" required placeholder="Please provide your professional background, qualifications, and experience in TCM..."></textarea>
+                        <div class="help-text">Include your credentials, years of experience, publications, and any relevant teaching experience.</div>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h2 class="section-title">Course Information</h2>
+                    
+                    <div class="form-group">
+                        <label for="courseTitle" class="required">Course Title</label>
+                        <input type="text" id="courseTitle" name="courseTitle" value="Traditional Chinese Medicine: Foundations and Clinical Applications" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="courseSubtitle">Course Subtitle (Optional)</label>
+                        <input type="text" id="courseSubtitle" name="courseSubtitle" value="An Introduction to Yin-Yang Theory, Five Elements, and Holistic Diagnosis">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="courseLevel" class="required">Course Level</label>
+                        <select id="courseLevel" name="courseLevel" required>
+                            <option value="">Select Level</option>
+                            <option value="beginner" selected>Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="advanced">Advanced</option>
+                            <option value="mixed">Mixed</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="courseDescription" class="required">Course Description</label>
+                        <textarea id="courseDescription" name="courseDescription" required>This course provides a comprehensive introduction to Traditional Chinese Medicine (TCM), covering its historical development, core theoretical frameworks including Yin-Yang and Five Elements theory, diagnostic methods, and treatment principles. Students will learn about Qi, meridians, Zang-Fu organ systems, and the holistic approach to health that characterizes TCM. The course also explores the integration of TCM with modern healthcare practices and includes practical self-assessment techniques.</textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="learningObjectives" class="required">Learning Objectives</label>
+                        <textarea id="learningObjectives" name="learningObjectives" required>By the end of this course, students will be able to:
+
+• Explain the historical development and philosophical foundations of TCM
+• Describe the core concepts of Yin-Yang theory and Five Elements theory
+• Identify the major Zang-Fu organs and their functions in TCM
+• Understand the concepts of Qi, Blood, and Body Fluids and their circulation
+• Perform basic tongue and pulse self-assessment
+• Differentiate between common TCM patterns and their clinical manifestations
+• Discuss the principles of acupuncture, herbal medicine, and other TCM modalities
+• Recognize the safe application and limitations of TCM practices
+• Evaluate the integration of TCM with modern healthcare approaches</textarea>
+                        <div class="help-text">List 5-10 specific, measurable learning outcomes.</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="targetAudience" class="required">Target Audience</label>
+                        <textarea id="targetAudience" name="targetAudience" required>• Healthcare professionals interested in complementary medicine
+• Medical and nursing students
+• Individuals interested in holistic health approaches
+• TCM practitioners seeking to refresh foundational knowledge
+• Anyone curious about traditional healing systems</textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="prerequisites" class="required">Prerequisites</label>
+                        <textarea id="prerequisites" name="prerequisites" required>No specific medical background required. Basic understanding of human biology is helpful but not essential. This course is designed to be accessible to learners from diverse backgrounds.</textarea>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h2 class="section-title">Course Structure</h2>
+                    
+                    <div class="form-group">
+                        <label for="courseDuration" class="required">Estimated Course Duration</label>
+                        <input type="text" id="courseDuration" name="courseDuration" value="4 weeks, 3-5 hours per week" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="moduleStructure" class="required">Module Structure</label>
+                        <textarea id="moduleStructure" name="moduleStructure" required>Module 1: Foundations of TCM
+  • History and development of TCM
+  • Yin-Yang theory and applications
+  • Five Elements theory
+  • Basic philosophical concepts
+
+Module 2: TCM Physiology and Diagnosis
+  • Qi, Blood, and Body Fluids
+  • Zang-Fu organ systems
+  • Meridian theory
+  • Diagnostic methods: inspection, auscultation, interrogation, palpation
+
+Module 3: Patterns and Treatment Principles
+  • Etiology and pathology in TCM
+  • Pattern differentiation
+  • Treatment principles: reducing excess, reinforcing deficiency
+  • Introduction to acupuncture and moxibustion
+
+Module 4: Herbal Medicine and Integration
+  • Principles of Chinese herbal medicine
+  • Common herbs and formulas
+  • Diet therapy and lifestyle in TCM
+  • Integrating TCM with modern healthcare</textarea>
+                        <div class="help-text">Outline the course modules and key topics covered in each.</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="assessmentMethods" class="required">Assessment Methods</label>
+                        <textarea id="assessmentMethods" name="assessmentMethods" required>• Weekly quizzes (multiple choice, true/false) - 40%
+• Case study analysis - 25%
+• Final project: Personal health assessment using TCM principles - 25%
+• Discussion forum participation - 10%</textarea>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h2 class="section-title">Course Materials</h2>
+                    
+                    <div class="format-requirements">
+                        <h3>Coursera Format Requirements</h3>
+                        <p>Coursera courses typically consist of:</p>
+                        <ul>
+                            <li><strong>Video Lectures:</strong> 5-15 minute segments, HD quality (720p or 1080p)</li>
+                            <li><strong>Slides:</strong> PDF or PowerPoint format to accompany videos</li>
+                            <li><strong>Readings:</strong> PDF articles, book excerpts, or links to online resources</li>
+                            <li><strong>Quizzes:</strong> Multiple choice, true/false, matching questions</li>
+                            <li><strong>Assignments:</strong> Peer-reviewed or auto-graded assignments</li>
+                            <li><strong>Discussion Prompts:</strong> To facilitate student interaction</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>What types of content will you provide? (Select all that apply)</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="contentVideo" name="contentTypes" value="video" checked>
+                                <label for="contentVideo">Video Lectures</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="contentSlides" name="contentTypes" value="slides" checked>
+                                <label for="contentSlides">Presentation Slides</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="contentReadings" name="contentTypes" value="readings" checked>
+                                <label for="contentReadings">Readings/Articles</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="contentQuizzes" name="contentTypes" value="quizzes" checked>
+                                <label for="contentQuizzes">Quizzes</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="contentAssignments" name="contentTypes" value="assignments" checked>
+                                <label for="contentAssignments">Assignments</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="contentDiscussions" name="contentTypes" value="discussions" checked>
+                                <label for="contentDiscussions">Discussion Prompts</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="sampleContent">Upload Sample Content</label>
+                        <div class="file-upload">
+                            <label for="fileUpload">Choose Files</label>
+                            <input type="file" id="fileUpload" multiple>
+                            <div class="help-text">You can upload sample videos, slides, or other materials to demonstrate your course content.</div>
+                            <ul class="file-list" id="fileList"></ul>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="productionTimeline" class="required">Production Timeline</label>
+                        <textarea id="productionTimeline" name="productionTimeline" required>• Content development: 8 weeks
+• Video recording and editing: 4 weeks
+• Assessment creation: 2 weeks
+• Quality assurance and review: 2 weeks
+• Total estimated time: 16 weeks</textarea>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h2 class="section-title">Additional Information</h2>
+                    
+                    <div class="form-group">
+                        <label for="whyCoursera">Why is this course a good fit for Coursera?</label>
+                        <textarea id="whyCoursera" name="whyCoursera">This course addresses growing global interest in complementary and integrative medicine. TCM represents a holistic approach to health that complements Western medicine, and there is increasing scientific research validating many TCM practices. The course is designed to be accessible to international learners while respecting cultural origins of TCM. The interactive components and practical applications make it well-suited for Coursera's online learning platform.</textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="uniqueAspects">What makes this course unique?</label>
+                        <textarea id="uniqueAspects" name="uniqueAspects">• Combines theoretical foundations with practical self-assessment techniques
+• Integrates historical perspective with modern research
+• Includes interactive elements like virtual pulse and tongue diagnosis
+• Developed by an experienced TCM practitioner with academic background
+• Addresses both traditional applications and modern integrations</textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="additionalNotes">Additional Notes or Comments</label>
+                        <textarea id="additionalNotes" name="additionalNotes" placeholder="Any additional information you'd like to share with the Coursera team..."></textarea>
+                    </div>
+                </div>
+                
+                <button type="submit" class="submit-btn">Submit Course Proposal</button>
+            </form>
+            
+            <div class="preview-section">
+                <h3 class="preview-title">Next Steps After Submission</h3>
+                <p>After submitting this form, the Coursera team will review your proposal and may contact you for additional information. If approved, you'll work with a Coursera partner manager to develop your course.</p>
+                <p><strong>Typical course development process:</strong></p>
+                <ol>
+                    <li>Proposal review and approval</li>
+                    <li>Contract and partnership agreement</li>
+                    <li>Course development with support from Coursera's instructional design team</li>
+                    <li>Quality assurance and review</li>
+                    <li>Course launch and marketing</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('fileUpload').addEventListener('change', function(e) {
+            const fileList = document.getElementById('fileList');
+            fileList.innerHTML = '';
+            
+            for (let i = 0; i < this.files.length; i++) {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    ${this.files[i].name} 
+                    <button type="button" onclick="this.parentElement.remove()">×</button>
+                `;
+                fileList.appendChild(li);
+            }
+        });
+        
+        document.getElementById('courseProposalForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Basic validation
+            const requiredFields = this.querySelectorAll('[required]');
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    isValid = false;
+                    field.style.borderColor = 'var(--error)';
+                } else {
+                    field.style.borderColor = '';
+                }
+            });
+            
+            if (isValid) {
+                // In a real implementation, you would send the data to a server
+                // For this demo, we'll just show an alert
+                alert('Course proposal submitted successfully! In a real implementation, this data would be sent to Coursera for review.');
+                
+                // You could also generate a PDF summary here
+                generateProposalPDF();
+            } else {
+                alert('Please fill in all required fields.');
+            }
+        });
+        
+        function generateProposalPDF() {
+            // This would generate a PDF summary of the proposal
+            // For this demo, we'll just log the form data
+            const formData = new FormData(document.getElementById('courseProposalForm'));
+            const data = {};
+            
+            for (let [key, value] of formData.entries()) {
+                data[key] = value;
+            }
+            
+            console.log('Course Proposal Data:', data);
+            alert('A PDF summary would be generated in a real implementation. Check the console for the form data.');
+        }
+    </script>
+</body>
+</html>
